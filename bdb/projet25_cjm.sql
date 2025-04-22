@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 22 avr. 2025 à 10:07
+-- Généré le : mar. 22 avr. 2025 à 10:16
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -24,38 +24,112 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `feedbacks`
+-- Structure de la table `boutique`
 --
 
-CREATE TABLE `feedbacks` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(64) NOT NULL,
-  `age` int(11) NOT NULL,
-  `contenu` varchar(500) NOT NULL
+CREATE TABLE `boutique` (
+  `id_panier` int(11) NOT NULL,
+  `id_clients` int(11) NOT NULL,
+  `panier` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Déchargement des données de la table `feedbacks`
+-- Structure de la table `contact`
 --
 
-INSERT INTO `feedbacks` (`id`, `nom`, `age`, `contenu`) VALUES
-(1, 'Romain', 19, 'Je recommande !'),
-(2, 'Thomas', 19, 'Pas mal mais peut mieux faire'),
-(9, 'Georges', 51, 'Votre astuce pour ‘muscler le doigt en changeant de chaîne TV’ m’a changé la vie ! Fini la culpabilité du sport ! Maintenant, je passe des heures à zapper tout en prenant soin de ma forme. Qui a besoin de courir quand on peut télécommander ?'),
-(20, 'Martine', 54, 'Vous m\'avez libérée des \"5 fruits et légumes\" avec votre article \"Les pizzas comptent-elles comme salade composée ?\" Maintenant, je mange mon \"salade tomate oignon\" tous les jours ! Merci pour cette découverte !'),
-(21, 'Tom', 18, 'Depuis que j\'ai adopté la technique du snacking à volonté, c\'est simple : je n\'ai jamais faim ! Pourquoi attendre l\'heure des repas ? Maintenant, j\'ai toujours un paquet de chips à portée de main. Merci pour la liberté !'),
-(22, 'Alex', 29, 'Dormir juste après chaque repas ? Une révolution ! Avant, j’avais de l’insomnie. Maintenant, je dors toute la journée. Qui aurait cru que les siestes post-repas étaient la solution miracle ? Merci, la vie est douce.'),
-(23, 'Fatima', 38, 'Votre guide \"10 excuses pour éviter l’exercice\" est tout simplement brillant ! Avant, je me sentais coupable de ne pas courir. Maintenant, je suis sereine et repose mes chevilles sur le canapé. Vive la relaxation !'),
-(24, 'Olivier', 41, 'Depuis que j’ai remplacé le lait par la crème glacée dans mes céréales, chaque matin est un bonheur. Mon petit-déjeuner a le goût du dessert, et je me sens comme un roi ! Ma balance est peut-être moins fan, mais moi je suis ravi !');
+CREATE TABLE `contact` (
+  `id_contact` int(11) NOT NULL,
+  `id_clients` int(11) NOT NULL,
+  `request` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id_feedback` int(11) NOT NULL,
+  `id_clients` int(11) NOT NULL,
+  `feedback` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `historique`
+--
+
+CREATE TABLE `historique` (
+  `id_historique` int(11) NOT NULL,
+  `id_clients` int(11) NOT NULL,
+  `historique` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `programme`
+--
+
+CREATE TABLE `programme` (
+  `id_order` int(11) NOT NULL,
+  `id_clients` int(11) NOT NULL,
+  `programme` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(64) NOT NULL,
+  `prenom` varchar(64) NOT NULL,
+  `numero_de_tel` varchar(64) NOT NULL,
+  `adresse_email` varchar(64) NOT NULL,
+  `mot_de_passe` varchar(64) NOT NULL,
+  `sexe` int(11) NOT NULL,
+  `age` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `feedbacks`
+-- Index pour la table `boutique`
 --
-ALTER TABLE `feedbacks`
+ALTER TABLE `boutique`
+  ADD PRIMARY KEY (`id_panier`);
+
+--
+-- Index pour la table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id_contact`);
+
+--
+-- Index pour la table `historique`
+--
+ALTER TABLE `historique`
+  ADD PRIMARY KEY (`id_historique`);
+
+--
+-- Index pour la table `programme`
+--
+ALTER TABLE `programme`
+  ADD PRIMARY KEY (`id_order`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -63,10 +137,34 @@ ALTER TABLE `feedbacks`
 --
 
 --
--- AUTO_INCREMENT pour la table `feedbacks`
+-- AUTO_INCREMENT pour la table `boutique`
 --
-ALTER TABLE `feedbacks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+ALTER TABLE `boutique`
+  MODIFY `id_panier` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `historique`
+--
+ALTER TABLE `historique`
+  MODIFY `id_historique` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `programme`
+--
+ALTER TABLE `programme`
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
