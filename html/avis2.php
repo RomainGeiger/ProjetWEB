@@ -23,7 +23,7 @@
 <div class="container">
 
     <?php 
-        echo "test";
+        require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
     ?>
 
     <div class="testimonial">
