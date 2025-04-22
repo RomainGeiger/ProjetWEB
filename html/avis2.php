@@ -24,12 +24,32 @@
 
     <?php 
         require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
+
+        $reqSQL="SELECT nom,age,contenu FROM feedbacks";
+			$req = $conn->prepare($reqSQL);
+            $req->execute();
+				
+			$resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+			$conn=NULL;	
+
+            /*echo '<pre>';
+            print_r($resultat);
+            echo '</pre>';*/
+
+            foreach($resultat as $value){
+                //echo 'Nom : '.$value['nom'].' | Age : '.$value['age'].' | Contenu : '.$value['contenu'];
+
+                echo '
+                <div class="testimonial">
+                    <h3>'.$value['nom'].', '.$value['age'].' ans</h3>
+                    <p>"'.$value['contenu'].'"</p>
+                </div>';
+
+            }
+			//Fermer la connexion
+
     ?>
 
-    <div class="testimonial">
-        <h3>Olivier, 41 ans</h3>
-        <p>"Depuis que j’ai remplacé le lait par la crème glacée dans mes céréales, chaque matin est un bonheur. Mon petit-déjeuner a le goût du dessert, et je me sens comme un roi ! Ma balance est peut-être moins fan, mais moi je suis ravi ! 🍦😄"</p>
-    </div>
 
     <div class="avis">
         <h2>Déposez votre avis !</h2>
