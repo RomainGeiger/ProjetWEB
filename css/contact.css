@@ -1,0 +1,152 @@
+/* Réinitialisation générale */
+* {
+    font-family: Courier New;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Mise en page avec grille */
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    min-height: 100vh;
+    line-height: 1.6;
+    background-color: white;
+    color: black;
+}
+
+header {
+    grid-area: header;
+    text-align: center;
+    background: orange;
+    color: red;
+    padding: 20px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+nav {
+    margin: 20px 0;
+    background-color: white;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: orange;
+}
+
+main {
+    grid-area: main;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.contact-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.contact-form button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background: linear-gradient(90deg, yellow, orange);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: linear-gradient(90deg, orange, yellow);
+}
+
+footer {
+    text-align: center;
+    background: orange;
+    color: white;
+    padding: 15px 10px;
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+    color: red;
+    text-decoration: none;
+}
+
+footer ul {
+    list-style: none;
+    padding: 10px;
+}
+
+footer ul li {
+    margin: 5px 0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav a {
+        margin: 0 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav a {
+        margin: 0 5px;
+        font-size: 0.8rem;
+    }
+
+    .contact-form button {
+        font-size: 0.9rem;
+    }
+}

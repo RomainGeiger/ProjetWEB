@@ -1,0 +1,247 @@
+/*h1 liens, images, li, div, br, ul, h2, */
+ *{
+   font-family: Courier New;
+   color: #242423;
+   box-sizing: border-box;
+   text-decoration: none;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+ h1,h2{
+    color:red;
+
+ }
+
+ article{
+   padding-top: 5px;
+   border:1px solid #F5CB5C;
+   border-radius: 5px;
+   color: black;
+}
+
+article img{
+   width: 100%;
+}
+
+
+ .formLetter fieldset{
+   border-color: red;
+   margin: auto;
+   padding:25px;
+   height: 550px;
+   
+}
+
+.formLetter fieldset:hover{
+   box-shadow: 2px 2px 5px red;
+   
+}
+
+.formLetter legend{
+   font-weight: bold;
+   text-shadow: 1px 1px orange;
+}
+
+.formLetter label{
+   font-weight: bold;
+   display: inline;
+   width: 25%;
+}
+
+
+.spécial:focus{
+   outline: none;
+   border-bottom: 1px solid #F5CB5C;
+   background-color: red;
+}
+
+.formLetter textarea{
+   width: 25%;
+   height: 50px;
+   display: block;
+   margin: auto;
+   background-color: white;
+}
+
+.formLetter textarea:focus{
+   outline: none;
+   border:1px solid red;
+   background-color: #F5CB5C;
+   width: 50%;
+   height: 100px;
+}
+
+.formLetter input{
+   background-color: white;
+   color: black;
+   font-weight: bold;
+   border: 2px solid black;
+   margin: 10px;
+   padding: 10px 20px;
+   width: 120px;
+   border-radius: 10px;
+   box-shadow: 2px 2px 5px;
+}
+
+.formLetter input:hover{
+   color:black;
+   background-color: #F5CB5C;
+   border: 2px solid red;
+   box-shadow: 2px 2px 5px red;
+   cursor: pointer;
+} 
+header{
+   grid-area: Entete;
+   text-align: center;
+    background: orange;
+    color: white;
+    padding: 20px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+header h1 {
+   margin: 0;
+   font-size: 2.5rem;
+   font-weight: bold;
+}
+
+/* Navigation */
+nav {
+   margin: 20px 0;
+   background-color: white;
+}
+
+nav a {
+   text-decoration: none;
+   color: black;
+   margin: 0 15px;
+   font-weight: bold;
+   transition: color 0.3s;
+}
+
+nav a:hover {
+   color: orange;
+}
+
+footer{
+   grid-area: Footer;
+   border:2px solid red;
+}
+footer a{
+
+   color:red;
+
+}
+
+.conteneur {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto 50px 1350px 600px 50px auto;
+   grid-template-areas: 
+      "Entete"
+      "Aside2"
+      "Contenu"
+      "Form"
+      "Aside1"
+      "Footer";
+   height: 100vh;
+}
+
+
+main{
+   grid-area: Contenu;
+}
+
+form{
+   grid-area: Form;
+}
+
+.aside1{
+   grid-area: Aside1;
+   background-color: gray;
+}
+.aside2{
+   grid-area: Aside2;
+   background-color: gray;
+}
+@media (min-width: 768px) { 
+   .conteneur {
+      grid-template-columns: 1fr 4fr 1fr;
+      grid-template-areas: 
+         "Entete Entete Entete"
+         "Aside1 Contenu Aside2"
+         "Aside1 Form Aside2"
+         "Footer Footer Footer";
+   }
+   .aside1{
+      grid-area: Aside1;
+      background-color: gray;
+   }
+   .aside2{
+      grid-area: Aside2;
+      background-color: gray;
+      color: gray;
+   }
+
+}
+@media (min-width: 600px) { 
+   .conteneur {
+      grid-template-columns: 1fr 3fr 1fr; /* 3x plus large pour le contenu principal */
+      grid-template-rows: auto auto 600px auto;
+      grid-template-areas: 
+         "Entete Entete Entete"
+         "Aside1 Contenu Contenu"
+         "Form Form Form"
+         "Aside2 Aside2 Aside2"
+         "Footer Footer Footer";
+   }
+   
+
+   /* Ajustement des articles */
+   article {
+      margin-bottom: 20px; /* Ajoute un espace entre les articles */
+   }
+
+   article img {
+      width: 100%; /* Ajuste l'image pour prendre toute la largeur disponible */
+      height: auto;
+   }
+
+   .aside1, .aside2 {
+      background-color: lightgray;
+      padding: 10px;
+   }
+   
+   footer iframe {
+      width: 100%; /* Permet à la carte d'occuper toute la largeur disponible */
+      height: 350px;
+   }
+}
+
+@media (min-width: 768px) { 
+   .conteneur {
+      grid-template-columns: 1fr 5fr 1fr;
+      grid-template-rows: auto auto 600px auto;
+      grid-template-areas: 
+         "Entete Entete Entete"
+         "Aside1 Contenu Aside2"
+         "Aside1 Form Aside2"
+         "Footer Footer Footer";
+   }
+   .aside1{
+      grid-area: Aside1;
+      background-color: gray;
+   }
+   .aside2{
+      grid-area: Aside2;
+      background-color: gray;
+      color: gray;
+   }
+   article img {
+      width: 50%; /* Ajuste l'image pour prendre toute la largeur disponible */
+      height: auto;
+   }
+
+}

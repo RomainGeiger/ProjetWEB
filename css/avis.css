@@ -1,0 +1,176 @@
+*{
+    font-family: Courier New;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: black;
+}
+
+header {
+    text-align: center;
+    background: orange;
+    color: red;
+    padding: 20px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Navigation */
+nav {
+    margin: 20px 0;
+    background-color: white;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: orange;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+.testimonial {
+    background: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: red;
+}
+
+.avis {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.avis h2 {
+    color: orange;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.avis form {
+    display: flex;
+    flex-direction: column;
+}
+
+.avis label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: black;
+}
+
+.avis input, .submit-review textarea {
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.avis input:focus, .submit-review textarea:focus {
+    border-color: orange;
+    outline: none;
+}
+
+.avis button {
+    padding: 12px 20px;
+    background: linear-gradient(90deg, orange, red);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.avis button:hover {
+    background: linear-gradient(90deg, red, orange);
+}
+
+footer iframe {
+    width: 100%; /* L'iframe occupe 100% de la largeur du conteneur */
+    height: auto; /* Ajuste automatiquement la hauteur */
+    max-width: 100%; /* Empêche les débordements */
+}
+footer{
+    border:2px solid red;
+ }
+ footer a{
+ 
+    color:red;
+ 
+ }
+/* Media Queries */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .testimonial {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 5px;
+    }
+
+    .testimonial {
+        padding: 10px;
+    }
+
+    .avis input, .avis textarea, .avis button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 0 5px;
+    }
+
+    .avis {
+        padding: 15px;
+    }
+}
