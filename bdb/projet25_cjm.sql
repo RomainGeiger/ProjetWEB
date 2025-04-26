@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 26 avr. 2025 à 13:57
+-- Généré le : sam. 26 avr. 2025 à 14:21
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -57,6 +57,13 @@ CREATE TABLE `feedback` (
   `feedback` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `feedback`
+--
+
+INSERT INTO `feedback` (`id_feedback`, `id_clients`, `feedback`) VALUES
+(1, 1, 'Test de feedback');
+
 -- --------------------------------------------------------
 
 --
@@ -95,8 +102,15 @@ CREATE TABLE `utilisateur` (
   `adresse_email` varchar(64) NOT NULL,
   `mot_de_passe` varchar(64) NOT NULL,
   `sexe` int(11) NOT NULL,
-  `age` date NOT NULL
+  `age` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `numero_de_tel`, `adresse_email`, `mot_de_passe`, `sexe`, `age`) VALUES
+(1, 'Geiger', 'Romain', '0606060606', 'test@gmail.com', 'testtest2025', 1, 19);
 
 --
 -- Index pour les tables déchargées
@@ -160,6 +174,12 @@ ALTER TABLE `contact`
   MODIFY `id_contact` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `historique`
 --
 ALTER TABLE `historique`
@@ -175,7 +195,7 @@ ALTER TABLE `programme`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
