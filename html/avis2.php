@@ -37,6 +37,8 @@
             print_r($resultat);
             echo '</pre>';*/
 
+            // test
+
             foreach($resultat as $value){
                 //echo 'Nom : '.$value['nom'].' | Age : '.$value['age'].' | Contenu : '.$value['contenu'];
 
