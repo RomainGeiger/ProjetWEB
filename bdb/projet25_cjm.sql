@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 22 avr. 2025 à 10:16
+-- Généré le : sam. 26 avr. 2025 à 13:57
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -106,25 +106,36 @@ CREATE TABLE `utilisateur` (
 -- Index pour la table `boutique`
 --
 ALTER TABLE `boutique`
-  ADD PRIMARY KEY (`id_panier`);
+  ADD PRIMARY KEY (`id_panier`),
+  ADD KEY `LiaisonClientBoutique` (`id_clients`);
 
 --
 -- Index pour la table `contact`
 --
 ALTER TABLE `contact`
-  ADD PRIMARY KEY (`id_contact`);
+  ADD PRIMARY KEY (`id_contact`),
+  ADD KEY `LiaisonClientContact` (`id_clients`);
+
+--
+-- Index pour la table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id_feedback`),
+  ADD KEY `LiaisonClientFeedback` (`id_clients`);
 
 --
 -- Index pour la table `historique`
 --
 ALTER TABLE `historique`
-  ADD PRIMARY KEY (`id_historique`);
+  ADD PRIMARY KEY (`id_historique`),
+  ADD KEY `LiaisonClientHistorique` (`id_clients`);
 
 --
 -- Index pour la table `programme`
 --
 ALTER TABLE `programme`
-  ADD PRIMARY KEY (`id_order`);
+  ADD PRIMARY KEY (`id_order`),
+  ADD KEY `LiaisonClientProgramme` (`id_clients`);
 
 --
 -- Index pour la table `utilisateur`
@@ -165,6 +176,40 @@ ALTER TABLE `programme`
 --
 ALTER TABLE `utilisateur`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `boutique`
+--
+ALTER TABLE `boutique`
+  ADD CONSTRAINT `LiaisonClientBoutique` FOREIGN KEY (`id_clients`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `contact`
+--
+ALTER TABLE `contact`
+  ADD CONSTRAINT `LiaisonClientContact` FOREIGN KEY (`id_clients`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `LiaisonClientFeedback` FOREIGN KEY (`id_clients`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `historique`
+--
+ALTER TABLE `historique`
+  ADD CONSTRAINT `LiaisonClientHistorique` FOREIGN KEY (`id_clients`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `programme`
+--
+ALTER TABLE `programme`
+  ADD CONSTRAINT `LiaisonClientProgramme` FOREIGN KEY (`id_clients`) REFERENCES `utilisateur` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
