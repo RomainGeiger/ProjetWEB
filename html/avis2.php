@@ -25,7 +25,8 @@
     <?php 
         require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
 
-        $reqSQL="SELECT nom,age,contenu FROM feedbacks";
+        $reqSQL=
+        "SELECT utilisateur.nom, utilisateur.prenom, utilisateur.age, feedback.feedback FROM feedback INNER JOIN utilisateur ON feedback.id_clients = utilisateur.id;";
 			$req = $conn->prepare($reqSQL);
             $req->execute();
 				
@@ -41,8 +42,8 @@
 
                 echo '
                 <div class="testimonial">
-                    <h3>'.$value['nom'].', '.$value['age'].' ans</h3>
-                    <p>"'.$value['contenu'].'"</p>
+                    <h3>'.$value['nom'].' '.$value['prenom'].', '.$value['age'].' ans</h3>
+                    <p>"'.$value['feedback'].'"</p>
                 </div>';
 
             }
