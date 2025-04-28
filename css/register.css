@@ -1,0 +1,184 @@
+/* Import de la typo */
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* ==== 1) Box‐sizing universel ==== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ==== 2) Styles de base ==== */
+html {
+  background-color: #56baed;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+}
+
+a {
+  color: #cccccc;
+  text-decoration: none;
+  font-weight: 400;
+  display: inline-block;
+}
+
+/* ==== 3) Onglets / Titres ==== */
+h2 {
+  display: inline-block;
+  margin: 40px 8px 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #cccccc;
+}
+
+h2.active {
+  color: #0d0d0d;
+  border-bottom: 2px solid #5fbae9;
+}
+
+h2.inactive {
+  color: #cccccc;
+}
+
+/* effet underline au survol */
+.underlineHover:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #56baed;
+  transition: width 0.2s;
+  position: relative;
+  bottom: -10px;
+  left: 0;
+}
+
+.underlineHover:hover {
+  color: #0d0d0d;
+}
+
+.underlineHover:hover:after {
+  width: 100%;
+}
+
+/* ==== 4) Structure du formulaire ==== */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
+
+#formContent {
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  padding: 30px 5px;
+  border-radius: 10px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+/* ==== 5) Boutons ==== */
+input[type=button],
+input[type=submit],
+input[type=reset] {
+  background-color: #56baed;
+  color: #fff;
+  border: none;
+  padding: 15px 80px;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin: 5px 20px 40px;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(95,186,233,0.4);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+input[type=button]:hover,
+input[type=submit]:hover,
+input[type=reset]:hover {
+  background-color: #39ace7;
+}
+
+input[type=button]:active,
+input[type=submit]:active,
+input[type=reset]:active {
+  transform: scale(0.95);
+}
+
+/* ==== 6) Champs de saisie & select ==== */
+input[type=text],
+input[type=password],
+input[type=tel],
+input[type=email],
+input[type=date],
+select {
+  display: block;
+  width: 85%;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 15px 32px;
+  font-size: 16px;
+  text-align: center;
+  color: #0d0d0d;
+  background-color: #f6f6f6;
+  border: 2px solid #f6f6f6;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+  appearance: none;
+}
+
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=tel]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+select:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+  outline: none;
+}
+
+input::placeholder {
+  color: #cccccc;
+}
+
+/* ==== 7) Animations ==== */
+/* Fade-in-down */
+.fadeInDown {
+  animation: fadeInDown 1s both;
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+ 100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Fade-in simple */
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 1s forwards ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Délais pour login.html */
+.fadeIn.first  { animation-delay: 0.4s; }
+.fadeIn.second { animation-delay: 0.6s; }
+.fadeIn.third  { animation-delay: 0.8s; }
+.fadeIn.fourth { animation-delay: 1s; }
