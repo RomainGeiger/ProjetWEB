@@ -8,17 +8,10 @@
 </head>
 <body>
 
-    <header>
-        <h1>Contactez-nous pour vos questions de prise de poids</h1>
-        <nav>
-            <a href="../index.html">Accueil</a>
-              <a href="présentation.html">Présentation</a>
-              <a href="programmes.html">Programmes</a>
-              <a href="avis.php">Feedback</a>
-              <a href="magazin.html">Boutique</a>
-              <a href="contact.html">Contact</a>
-        </nav>
-      </header>
+    <?php
+    $title = 'Accueil';
+    include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Darkmode.php';
+    ?>
 
 <div class="container">
 
