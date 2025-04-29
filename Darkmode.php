@@ -25,7 +25,7 @@ $theme = $_COOKIE['theme'] ?? 'light';
 <body>
 <header>
   <h1>Contactez-nous pour vos questions de prise de poids</h1>
-
+  <base href="/ProjetWEB/">
   <nav>
     <a href="index.php">Accueil</a>
     <a href="Php/présentation.php">Présentation</a>
