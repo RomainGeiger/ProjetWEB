@@ -11,7 +11,7 @@
 
     <?php
     $title = 'Accueil';
-    include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Darkmode.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Php/Darkmode.php';
     ?>
 
 <div class="container">

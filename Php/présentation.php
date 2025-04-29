@@ -10,7 +10,7 @@
 <body>
     <?php
     $title = 'Accueil';
-    include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Darkmode.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Php/Darkmode.php';
     ?>
     <h1>Bienvenue dans le monde de la très grande prise de masse</h1>
 
