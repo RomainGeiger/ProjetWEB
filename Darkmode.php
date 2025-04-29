@@ -25,14 +25,14 @@ $theme = $_COOKIE['theme'] ?? 'light';
 <body>
 <header>
   <h1>Contactez-nous pour vos questions de prise de poids</h1>
-
+  <base href="/ProjetWEB/">
   <nav>
-    <a href="/index.php">Accueil</a>
-    <a href="/Php/présentation.php">Présentation</a>
-    <a href="/Php/programmes.php">Programmes</a>
-    <a href="/Php/avis.php">Feedback</a>
-    <a href="/Php/magazin.php">Boutique</a>
-    <a href="/Php/contact.php">Contact</a>
+    <a href="index.php">Accueil</a>
+    <a href="Php/présentation.php">Présentation</a>
+    <a href="Php/programmes.php">Programmes</a>
+    <a href="Php/avis.php">Feedback</a>
+    <a href="Php/magazin.php">Boutique</a>
+    <a href="Php/contact.php">Contact</a>
 
     <?php $checked = $theme === 'dark' ? 'checked' : ''; ?>
     <label class="switch">
