@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mar. 29 avr. 2025 à 08:41
+-- Généré le : mar. 29 avr. 2025 à 09:58
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -62,7 +62,12 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id_feedback`, `id_clients`, `feedback`) VALUES
-(1, 1, 'Test de feedback');
+(8, 2, '\"Votre astuce pour \'muscler le doigt en changeant de chaîne TV\' m\'a changé la vie ! Fini la culpabilité du sport ! Maintenant, je passe des heures à zapper tout en prenant soin de ma forme. Qui a besoin de courir quand on peut télécommander ?\"'),
+(9, 3, '\"Vous m\'avez libérée des \'5 fruits et légumes\' avec votre article \'Les pizzas comptent-elles comme salade composée ?\' Maintenant, je mange mon \'salade tomate oignon\' tous les jours ! Merci pour cette découverte !\"'),
+(10, 4, '\"Depuis que j\'ai adopté la technique du snacking à volonté, c\'est simple : je n\'ai jamais faim ! Pourquoi attendre l\'heure des repas ? Maintenant, j\'ai toujours un paquet de chips à portée de main. Merci pour la liberté !\"'),
+(11, 5, '\"Dormir juste après chaque repas ? Une révolution ! Avant, j’avais de l’insomnie. Maintenant, je dors toute la journée. Qui aurait cru que les siestes post-repas étaient la solution miracle ? Merci, la vie est douce.\"'),
+(12, 6, '\"Votre guide \'10 excuses pour éviter l’exercice\' est tout simplement brillant ! Avant, je me sentais coupable de ne pas courir. Maintenant, je suis sereine et repose mes chevilles sur le canapé. Vive la relaxation !\"'),
+(13, 7, '\"Depuis que j’ai remplacé le lait par la crème glacée dans mes céréales, chaque matin est un bonheur. Mon petit-déjeuner a le goût du dessert, et je me sens comme un roi ! Ma balance est peut-être moins fan, mais moi je suis ravi !\"');
 
 -- --------------------------------------------------------
 
@@ -110,7 +115,13 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `numero_de_tel`, `adresse_email`, `mot_de_passe`, `estAdmin`, `age`) VALUES
-(1, 'Geiger', 'Romain', '0606060606', 'test@gmail.com', 'testtest2025', 0, 19);
+(1, 'Geiger', 'Romain', '0606060606', 'test@gmail.com', 'testtest2025', 0, 19),
+(2, 'Dupont', 'Georges', '065489794', 'dupont.georges@gmail.com', 'test1', 0, 51),
+(3, 'Dupont', 'Martine', '064794165', 'dupont.martine@gmail.com', 'test2', 0, 54),
+(4, 'Dupont', 'Tom', '064598714', 'dupont.tom@gmail.com', 'test3', 0, 18),
+(5, 'Dupont', 'Alex', '065449413', 'dupont.alex@gmail.com', 'test4', 0, 29),
+(6, 'Dupont', 'Fatima', '06494949', 'dupont.fatima@gmail.com', '079494649', 0, 38),
+(7, 'Dupont', 'Olivier', '06499841', 'dupont.olivier@gmail.com', '067949741', 0, 41);
 
 --
 -- Index pour les tables déchargées
@@ -177,7 +188,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT pour la table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `historique`
@@ -195,7 +206,7 @@ ALTER TABLE `programme`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Contraintes pour les tables déchargées
