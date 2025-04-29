@@ -182,3 +182,14 @@ input::placeholder {
 .fadeIn.second { animation-delay: 0.6s; }
 .fadeIn.third  { animation-delay: 0.8s; }
 .fadeIn.fourth { animation-delay: 1s; }
+
+*{
+  color:white;
+}
+body{padding:3%;
+background-color:black;}
+h1{color:white;
+text-align:center;}
+h2{color:red;}
+h3{color:green;}
+p{color:white}
