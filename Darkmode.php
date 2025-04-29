@@ -28,11 +28,11 @@ $theme = $_COOKIE['theme'] ?? 'light';
 
   <nav>
     <a href="/index.php">Accueil</a>
-    <a href="/html/présentation.php">Présentation</a>
-    <a href="/html/programmes.php">Programmes</a>
-    <a href="/html/avis.php">Feedback</a>
-    <a href="/html/magazin.php">Boutique</a>
-    <a href="/html/contact.php">Contact</a>
+    <a href="/Php/présentation.php">Présentation</a>
+    <a href="/Php/programmes.php">Programmes</a>
+    <a href="/Php/avis.php">Feedback</a>
+    <a href="/Php/magazin.php">Boutique</a>
+    <a href="/Php/contact.php">Contact</a>
 
     <?php $checked = $theme === 'dark' ? 'checked' : ''; ?>
     <label class="switch">
