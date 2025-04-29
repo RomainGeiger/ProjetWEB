@@ -17,11 +17,11 @@
   ?>
   <main>
     <form class="contact-form">
-      <label for="nom">Votre Nom :</label>
+      <label for="nom"><p>Votre Nom :</p></label>
       <input id="nom" name="nom" placeholder="Ex : Amélie Grossipe" required="" type="text" />
-      <label for="email">Votre Email :</label>
+      <label for="email"><p>Votre Email :</p></label>
       <input id="email" name="email" placeholder="Ex : foodie@bonvivant.com" required="" type="email" />
-      <label for="message">Votre Message :</label>
+      <label for="message"><p>Votre Message :</p></label>
       <textarea id="message" name="message" placeholder="Posez vos questions gourmandes ici..." required=""
         rows="4"></textarea>
       <button>Envoyer mon message</button>

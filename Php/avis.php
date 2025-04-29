@@ -43,13 +43,13 @@
     <div class="avis">
         <h2>Déposez votre avis !</h2>
         <form action="submit-review.php" method="post">
-            <label for="name">Votre prénom :</label>
+            <label for="name"><p>Votre prénom :</p></label>
             <input type="text" id="name" name="name" placeholder="Exemple : Pauline" required>
 
-            <label for="age">Votre âge :</label>
+            <label for="age" class="test"><p>Votre âge :</p></label>
             <input type="number" id="age" name="age" min="1" placeholder="Exemple : 30" required>
 
-            <label for="message">Votre témoignage :</label>
+            <label for="message" class="test"><p>Votre témoignage :</p></label>
             <textarea id="message" name="message" rows="5" placeholder="Racontez votre expérience..." required></textarea>
 
             <button type="submit">Envoyer</button>

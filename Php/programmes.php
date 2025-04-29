@@ -69,10 +69,9 @@
                     <div class="resume">
                             <p> Ce programme est facilement accessible, il permettra de vous lancer dans votre objectif avec un prix abordable. Les repas seront en grande partie des fritures, plats très calorique et des repas semblabes aux fastfood.
                                 <br>Les en-cas quand à eux seront surtout composés d'aliment sucrés, de sodas, ou d'aliment gras. 
-                                <br>
+                                <br></p>
                                 <br><h2>Nos conseils : </h2>
-                                <br>Il est important de les manger en dehors des repas. Votre sommeil ne doit pas exceder 7h, lors de votre sommeil vous allez utiliser énorméments de calories et vous éloigner de votre objectif. Réduire vos activités physique sera bénéfique à la prise de poids, avec une réduction de la masse musculaire. Essayé de vous hydraté seulement quand vous en resentez le besoin. 
-                            </p>
+                                <p><br>Il est important de les manger en dehors des repas. Votre sommeil ne doit pas exceder 7h, lors de votre sommeil vous allez utiliser énorméments de calories et vous éloigner de votre objectif. Réduire vos activités physique sera bénéfique à la prise de poids, avec une réduction de la masse musculaire. Essayé de vous hydraté seulement quand vous en resentez le besoin.</p>
                         </div>
                 </article>
             </main>
@@ -100,46 +99,47 @@
                     <legend>Commande</legend>
                     
                     <!-- Nom -->
-                    <label for="nom">Nom :</label>
+                    <label for="nom" class="test">Nom :</label>
                     <input class="spécial" type="text" name="nom" id="nom" placeholder="Votre nom">
                     <br><br>
                     
                     <!-- Prénom -->
-                    <label for="prenom">Prénom :</label>
+                    <label for="prenom" class="test">Prénom :</label>
                     <input class="spécial" type="text" name="prenom" id="prenom" value="">
                     <br><br>
             
                     <!-- Numéro de téléphone -->
-                    <label for="tel">Numéro de téléphone :</label>
+                    <label for="tel" class="test">Numéro de téléphone :</label>
                     <input class="spécial" type="tel" name="tel" id="tel" value="+33">
                     <br><br>
                     
                     <!-- Courriel -->
-                    <label for="courriel">Courriel :</label>
+                    <label for="courriel" class="test">Courriel :</label>
                     <input class="spécial" type="email" name="courriel" id="courriel">
                     <br><br>
             
                     <!-- Publicité -->
-                    <label for="pub">Pub :</label>
+                    <label for="pub" class="test">Pub :</label>
                     <input class="spécial" type="radio" name="pub" id="oui">
-                    <label for="oui">Oui, j'accepte</label>
+                    <label for="oui" class="test">Oui, j'accepte</label>
                     <input class="spécial" type="radio" name="pub" id="non">
-                    <label for="non">Non je refuse</label>
+                    <label for="non" class="test">Non je refuse</label>
                     <br><br>
             
                     <!-- Programme -->
-                    <label for="programme">Programme :</label>
+                    <label for="programme" class="test">Programme :</label>
                     <input class="spécial" type="checkbox" name="programme" id="Obèselix">
-                    <label for="Obèselix">Obèselix</label>
+                    <label for="Obèselix" class="test">Obèselix</label>
                     <input class="spécial" type="checkbox" name="programme" id="OmarSimpson">
-                    <label for="OmarSimpson">Omar Simpson</label>
+                    <label for="OmarSimpson" class="test">Omar Simpson</label>
                     <input class="spécial" type="checkbox" name="programme" id="Wargros">
-                    <label for="Wargros">Wargros</label>
+                    <label for="Wargros" class="test">Wargros</label>
                     <br><br>
             
                     <!-- Soumettre et Réinitialiser -->
                     <input class="spécial" type="submit" name="Envoyer" id="soumission" value="Soumettre">
                     <input class="spécial" type="reset" id="reinitialiser" value="Réinitialiser">
+
                 </fieldset>
             </form>
             
