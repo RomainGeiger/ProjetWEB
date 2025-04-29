@@ -31,17 +31,9 @@
             $req->execute();
 				
 			$resultat = $req->fetchAll(PDO::FETCH_ASSOC);
-			$conn=NULL;	
-
-            /*echo '<pre>';
-            print_r($resultat);
-            echo '</pre>';*/
-
-            // test
+			$conn=NULL;	//Fermer la connexion
 
             foreach($resultat as $value){
-                //echo 'Nom : '.$value['nom'].' | Age : '.$value['age'].' | Contenu : '.$value['contenu'];
-
                 echo '
                 <div class="testimonial">
                     <h3>'.$value['nom'].' '.$value['prenom'].', '.$value['age'].' ans</h3>
@@ -49,7 +41,7 @@
                 </div>';
 
             }
-			//Fermer la connexion
+			
 
     ?>
 
