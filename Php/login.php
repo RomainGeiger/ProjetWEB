@@ -1,15 +1,13 @@
 <?php
 // Connexion BDD
-require_once __DIR__ . '/../bdb/connexion.php'; // $pdo (PDO)
+require_once __DIR__ . '/../bdb/connexion.php'; 
 
 session_start();
 
 $erreurs = [];
 $email   = '';
 
-/* ───────────────────────
-   1. TRAITEMENT DU POST
-   ───────────────────────*/
+/* Traitement du post */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email    = trim($_POST['adresse_email'] ?? '');
     $password = trim($_POST['mot_de_passe']  ?? '');
@@ -23,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['mot_de_passe'])) {
-            /* Authentification OK */
             $_SESSION['user_id'] = $user['id'];
             header('Location: index.php');
             exit;
@@ -32,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreurs[] = 'Utilisateur ou mot de passe incorrect.';
     }
 }
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
@@ -42,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="wrapper fadeInDown">
     <div id="formContent">
-      <!-- Onglets -->
       <h2 class="active">Connexion</h2>
       <h2 class="inactive underlineHover"><a href="register.php">Inscription</a></h2>
 

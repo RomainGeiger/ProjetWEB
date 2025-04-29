@@ -1,8 +1,5 @@
 <?php
-// register.php – formulaire + traitement (plus de JavaScript)
-// ----------------------------------------------------------
-// Connexion à la base de données (adapte le chemin si besoin)
-require_once __DIR__ . '/../bdb/connexion.php'; // $mysqli ou $pdo
+require_once __DIR__ . '/../bdb/connexion.php';
 
 $erreurs = [];
 $champs  = [
@@ -14,9 +11,8 @@ $champs  = [
     'age'      => ''
 ];
 
-/* ───────── 1. TRAITEMENT DU POST ───────── */
+/*Traitement du Post */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // a) Récupérer & nettoyer
     foreach ($champs as $k => $v) {
         if (!isset($_POST[$k]) || trim($_POST[$k]) === '') {
             $erreurs[] = "Le champ $k est obligatoire.";
@@ -27,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password  = $_POST['password']  ?? '';
     $password2 = $_POST['password2'] ?? '';
 
-    // b) Règles métier
     if ($password !== $password2) {
         $erreurs[] = 'Les mots de passe ne correspondent pas.';
     }
@@ -35,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreurs[] = 'Adresse e‑mail invalide.';
     }
 
-    // c) Unicité de l’e‑mail
     if (empty($erreurs)) {
         $stmt = $mysqli->prepare('SELECT 1 FROM utilisateur WHERE adresse_email = ? LIMIT 1');
         $stmt->bind_param('s', $champs['email']);
@@ -47,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     }
 
-    // d) Insertion si tout est bon
     if (empty($erreurs)) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -74,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-/* ───────── 2. AFFICHAGE DU FORMULAIRE ───────── */
+/* Affichage du formulaire */
 ?>
 <!DOCTYPE html>
 <html lang="fr">
