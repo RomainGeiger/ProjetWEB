@@ -1,20 +1,6 @@
 <?php
 session_start();
-$servername = 'localhost';
-$db_user    = 'root';
-$db_pass    = 'root';
-$database   = 'projet25_cjm';
-
-try {
-    $conn = new PDO(
-        "mysql:host=$servername;dbname=$database;charset=utf8",
-        $db_user,
-        $db_pass
-    );
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur de connexion : '.$e->getMessage());
-}
+require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
 
 /* --- Traitement du formulaire --- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

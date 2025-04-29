@@ -1,14 +1,5 @@
 <?php
-/* Connexion */
-$servername = 'localhost';
-$db_user    = 'root';
-$db_pass    = 'root';
-$database   = 'projet25_cjm';
-
-$mysqli = new mysqli($servername, $db_user, $db_pass, $database);
-if ($mysqli->connect_errno) {
-    exit('Connexion échouée : '.$mysqli->connect_error);
-}
+require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
 
 /* Vérification et traitement du POST */
 if ($_SERVER['REQUEST_METHOD'] === 'POST'
