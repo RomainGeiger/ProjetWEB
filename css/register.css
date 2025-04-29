@@ -89,7 +89,7 @@ h2.inactive {
 input[type=button],
 input[type=submit],
 input[type=reset] {
-  background-color: #56baed;
+  background-color: orange;
   color: #fff;
   border: none;
   padding: 15px 80px;
