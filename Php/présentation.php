@@ -143,7 +143,6 @@
         <li><a class="formLink" href="contact.php">Contactez-nous </a></li>
         <li><a class="formLink" href="login.php">Connectez-vous! </a></li>
     </ul>
-
     </footer>
 </body> 
 </html>
