@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Témoignages - Être Gros, C'est Bon pour la Santé !</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/theme.css">
 </head>
 <?php
 $title = 'Accueil';

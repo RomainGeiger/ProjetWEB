@@ -20,7 +20,6 @@ $theme = $_COOKIE['theme'] ?? 'light';
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title><?= $title ?? 'Mon site'; ?></title>
-  <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="/css/theme.css">
 </head>
 <body>

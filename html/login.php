@@ -1,42 +1,65 @@
 <?php
+// Connexion BDD
+require_once __DIR__ . '/../bdb/connexion.php'; // $pdo (PDO)
+
 session_start();
-require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
 
-/* --- Traitement du formulaire --- */
+$erreurs = [];
+$email   = '';
+
+/* ───────────────────────
+   1. TRAITEMENT DU POST
+   ───────────────────────*/
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $email    = trim($_POST['adresse_email'] ?? '');
     $password = trim($_POST['mot_de_passe']  ?? '');
 
-    if ($email !== '' && $password !== '') {
-
-        $stmt = $conn->prepare(
-            'SELECT id, mot_de_passe
-             FROM utilisateur
-             WHERE adresse_email = :email
-             LIMIT 1'
-        );
-        $stmt->execute(['email' => $email]);
+    if ($email === '' || $password === '') {
+        $erreurs[] = 'Tous les champs sont requis.';
+    } else {
+        // Recherche de l'utilisateur
+        $stmt = $pdo->prepare('SELECT id, mot_de_passe FROM utilisateur WHERE adresse_email = ? LIMIT 1');
+        $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['mot_de_passe'])) {
             /* Authentification OK */
             $_SESSION['user_id'] = $user['id'];
-            header('Location: ../index.php');
+            header('Location: index.php');
             exit;
         }
 
-        /* Mauvais identifiants */
-        header('Location: login.html?erreur=1');
-        exit;
+        $erreurs[] = 'Utilisateur ou mot de passe incorrect.';
     }
-
-    /* Champs vides */
-    header('Location: login.html?erreur=2');
-    exit;
 }
+?><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Connexion</title>
+    <link rel="stylesheet" href="../css/register.css" />
+</head>
+<body>
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Onglets -->
+      <h2 class="active">Connexion</h2>
+      <h2 class="inactive underlineHover"><a href="register.php">Inscription</a></h2>
 
-/* Accès direct : on renvoie vers le formulaire */
-header('Location: login.html');
-exit;
-?>
+      <!-- Affichage des erreurs -->
+      <?php if ($erreurs): ?>
+        <div class="alert">
+          <?php foreach ($erreurs as $e) echo "<p>$e</p>"; ?>
+        </div>
+      <?php endif; ?>
+
+      <!-- Formulaire -->
+      <form action="login.php" method="post">
+        <input type="email" name="adresse_email" class="fadeIn second" placeholder="Adresse e-mail" value="<?=htmlspecialchars($email)?>" required />
+        <input type="password" name="mot_de_passe" class="fadeIn third" placeholder="Mot de passe" required />
+        <input type="submit" class="fadeIn fourth" value="Se connecter" />
+      </form>
+    </div>
+  </div>
+</body>
+</html>

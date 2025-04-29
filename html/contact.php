@@ -7,6 +7,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Contact - Club de Prise de Poids</title>
   <link href="../css/contact.css" rel="stylesheet" />
+  <link href="../css/theme.css" rel="stylesheet" />
 </head>
 
 <body>
