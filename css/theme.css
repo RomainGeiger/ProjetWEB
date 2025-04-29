@@ -1,8 +1,8 @@
-/* Palette ---------------------------------------------------------------- */
+/* Palette */
 :root        { --bg:#ffffff; --fg:#222222; --link:#1d4ed8; }
 :root.dark   { --bg:#111827; --fg:#e5e7eb; --link:#60a5fa; }
 
-/* Application globale ---------------------------------------------------- */
+/* Application globale */
 html,body    {
   background:var(--bg);
   color:var(--fg);
@@ -11,7 +11,7 @@ html,body    {
 
 a            { color:var(--link); }
 
-/* Bouton / lien de bascule ---------------------------------------------- */
+/* Bouton / lien de bascule */
 .theme-toggle{
   display:inline-block;
   margin-left:1rem;

@@ -1,5 +1,21 @@
 <?php
+session_start();
+
+// Redirection si déjà connecté
+if (
+    isset($_SESSION['user_id']) ||
+    (isset($_COOKIE['user_session']) && !empty($_COOKIE['user_session']))
+) {
+    header('Location: ../index.php');
+    exit;
+}
+
 require_once __DIR__ . '/../bdb/connexion.php';
+
+if (!isset($conn) || !($conn instanceof PDO)) {
+    // Sécurité : si la connexion n'est pas correcte, on stoppe tout de suite
+    die('Connexion BD introuvable.');
+}
 
 $erreurs = [];
 $champs  = [
@@ -11,8 +27,9 @@ $champs  = [
     'age'      => ''
 ];
 
-/*Traitement du Post */
+// Traitement du Post
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    /* 1. Vérification des champs obligatoires */
     foreach ($champs as $k => $v) {
         if (!isset($_POST[$k]) || trim($_POST[$k]) === '') {
             $erreurs[] = "Le champ $k est obligatoire.";
@@ -20,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $champs[$k] = trim($_POST[$k]);
         }
     }
+
     $password  = $_POST['password']  ?? '';
     $password2 = $_POST['password2'] ?? '';
 
@@ -27,47 +45,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreurs[] = 'Les mots de passe ne correspondent pas.';
     }
     if (!filter_var($champs['email'], FILTER_VALIDATE_EMAIL)) {
-        $erreurs[] = 'Adresse e‑mail invalide.';
+        $erreurs[] = 'Adresse e-mail invalide.';
     }
 
-    if (empty($erreurs)) {
-        $stmt = $mysqli->prepare('SELECT 1 FROM utilisateur WHERE adresse_email = ? LIMIT 1');
-        $stmt->bind_param('s', $champs['email']);
-        $stmt->execute();
-        $stmt->store_result();
-        if ($stmt->num_rows) {
-            $erreurs[] = 'Adresse e‑mail déjà utilisée.';
+    try {
+        /* 2. Vérifie l'unicité de l'adresse e-mail */
+        if (empty($erreurs)) {
+            $sql  = 'SELECT 1 FROM utilisateur WHERE adresse_email = ? LIMIT 1';
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$champs['email']]);
+            if ($stmt->fetchColumn()) {
+                $erreurs[] = 'Adresse e-mail déjà utilisée.';
+            }
         }
-        $stmt->close();
-    }
 
-    if (empty($erreurs)) {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+        /* 3. Insère l'utilisateur */
+        if (empty($erreurs)) {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmt = $mysqli->prepare('INSERT INTO utilisateur
-            (nom, prenom, numero_de_tel, adresse_email, mot_de_passe, sexe, age)
-            VALUES (?,?,?,?,?,?,?)');
-        $stmt->bind_param(
-            'ssssssi',
-            $champs['nom'],
-            $champs['prenom'],
-            $champs['tel'],
-            $champs['email'],
-            $hash,
-            $champs['sexe'],
-            $champs['age']
-        );
+            $sql = 'INSERT INTO utilisateur
+                    (nom, prenom, numero_de_tel, adresse_email, mot_de_passe, sexe, age)
+                    VALUES (:nom, :prenom, :tel, :email, :pwd, :sexe, :age)';
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([
+                ':nom'    => $champs['nom'],
+                ':prenom' => $champs['prenom'],
+                ':tel'    => $champs['tel'],
+                ':email'  => $champs['email'],
+                ':pwd'    => $hash,
+                ':sexe'   => $champs['sexe'],
+                ':age'    => $champs['age']
+            ]);
 
-        if ($stmt->execute()) {
             header('Location: login.php?inscription=reussie');
             exit;
         }
-        $erreurs[] = "Erreur d\'insertion : " . $stmt->error;
-        $stmt->close();
+    } catch (PDOException $e) {
+        $erreurs[] = 'Une erreur est survenue, merci de réessayer plus tard.';
     }
 }
 
-/* Affichage du formulaire */
+// Affiche le formulaire
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -98,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="tel" name="tel" placeholder="Numéro de téléphone" required
                    value="<?= htmlspecialchars($champs['tel']) ?>" />
 
-            <input type="email" name="email" placeholder="Adresse e‑mail" required
+            <input type="email" name="email" placeholder="Adresse e-mail" required
                    value="<?= htmlspecialchars($champs['email']) ?>" />
 
             <input type="password" name="password" placeholder="Mot de passe" required />
