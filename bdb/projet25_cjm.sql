@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 26 avr. 2025 à 14:21
+-- Généré le : mar. 29 avr. 2025 à 08:41
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -101,7 +101,7 @@ CREATE TABLE `utilisateur` (
   `numero_de_tel` varchar(64) NOT NULL,
   `adresse_email` varchar(64) NOT NULL,
   `mot_de_passe` varchar(64) NOT NULL,
-  `sexe` int(11) NOT NULL,
+  `estAdmin` tinyint(1) NOT NULL,
   `age` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -109,8 +109,8 @@ CREATE TABLE `utilisateur` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `numero_de_tel`, `adresse_email`, `mot_de_passe`, `sexe`, `age`) VALUES
-(1, 'Geiger', 'Romain', '0606060606', 'test@gmail.com', 'testtest2025', 1, 19);
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `numero_de_tel`, `adresse_email`, `mot_de_passe`, `estAdmin`, `age`) VALUES
+(1, 'Geiger', 'Romain', '0606060606', 'test@gmail.com', 'testtest2025', 0, 19);
 
 --
 -- Index pour les tables déchargées

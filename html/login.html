@@ -39,14 +39,17 @@
     </div>
   </div>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const e = urlParams.get('erreur');
-    if (e === '1') {
-      alert("Utilisateur ou mot de passe incorrect.");
-    } else if (e === '2') {
-      alert("Tous les champs sont requis.");
+<?php
+if (isset($_GET['erreur'])) {
+    $e = $_GET['erreur'];
+
+    if ($e == '1') {
+        echo "<script>alert('Utilisateur ou mot de passe incorrect.');</script>";
+    } else if ($e == '2') {
+        echo "<script>alert('Tous les champs sont requis.');</script>";
     }
-  </script>
+}
+?>
+
 </body>
 </html>
