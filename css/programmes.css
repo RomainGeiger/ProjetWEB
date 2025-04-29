@@ -62,7 +62,7 @@ article img{
    height: 50px;
    display: block;
    margin: auto;
-   background-color: white;
+   background-color: black;
 }
 
 .formLetter textarea:focus{
@@ -74,7 +74,7 @@ article img{
 }
 
 .formLetter input{
-   background-color: white;
+   background-color: black;
    color: black;
    font-weight: bold;
    border: 2px solid black;
@@ -110,12 +110,12 @@ header h1 {
 /* Navigation */
 nav {
    margin: 20px 0;
-   background-color: white;
+   background-color: black;
 }
 
 nav a {
    text-decoration: none;
-   color: black;
+   color: white;
    margin: 0 15px;
    font-weight: bold;
    transition: color 0.3s;
@@ -177,12 +177,12 @@ form{
    }
    .aside1{
       grid-area: Aside1;
-      background-color: gray;
+      background-color: black;
    }
    .aside2{
       grid-area: Aside2;
-      background-color: gray;
-      color: gray;
+      background-color: black;
+      color:black;
    }
 
 }
@@ -232,11 +232,11 @@ form{
    }
    .aside1{
       grid-area: Aside1;
-      background-color: gray;
+      background-color: black;
    }
    .aside2{
       grid-area: Aside2;
-      background-color: gray;
+      background-color: black;
       color: gray;
    }
    article img {
