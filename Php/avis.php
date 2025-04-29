@@ -5,20 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Témoignages - Être Gros, C'est Bon pour la Santé !</title>
     <link rel="stylesheet" href="../css/avis.css">
+    <link rel="stylesheet" href="../css/theme.css">
 </head>
 <body>
 
-    <header>
-        <h1>Contactez-nous pour vos questions de prise de poids</h1>
-        <nav>
-            <a href="../index.html">Accueil</a>
-              <a href="présentation.html">Présentation</a>
-              <a href="programmes.html">Programmes</a>
-              <a href="avis.php">Feedback</a>
-              <a href="magazin.html">Boutique</a>
-              <a href="contact.html">Contact</a>
-        </nav>
-      </header>
+    <?php
+    $title = 'Accueil';
+    include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Php/Darkmode.php';
+    ?>
 
 <div class="container">
 
