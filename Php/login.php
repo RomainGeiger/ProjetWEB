@@ -10,11 +10,8 @@ if (
     exit;
 }
 
-require_once __DIR__ . '/../bdb/connexion.php';
+require("..\bdb\connexion.php");
 
-if (!isset($conn) || !($conn instanceof PDO)) {
-    die('Connexion BD introuvable.');
-}
 
 $erreurs = [];
 $email   = '';
@@ -33,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare($sql);
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
         if ($user && password_verify($password, $user['mot_de_passe'])) {
             $_SESSION['user_id'] = $user['id'];
