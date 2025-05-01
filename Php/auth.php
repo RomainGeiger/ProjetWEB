@@ -25,7 +25,7 @@ function current_user_id(bool $redirect = true): ?int
 
     /* redirection si pas identifier */
     if ($redirect) {
-        header('Location: pages/login.php');
+        header('Location: php/login.php');
         exit;
     }
 
