@@ -37,6 +37,8 @@ $theme = $_COOKIE['theme'] ?? 'light';
     session_start();
     if (!isset($_SESSION['user_id'])) {
       echo '<a href="register.php">Inscription/Connexion</a>';
+    }else{
+      echo '<a href="logout.php">Déconnexion</a></p>';
     }
     ?>
 
