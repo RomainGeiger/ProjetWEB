@@ -20,22 +20,34 @@
         require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
         //session_start(); le header fait déjà un session_start pour gérer l'affichage de l'option d'inscription/connexion
 
-        $reqSQL=
-        "SELECT utilisateur.nom, utilisateur.prenom, utilisateur.age, feedback.feedback FROM feedback INNER JOIN utilisateur ON feedback.id_clients = utilisateur.id;";
-			$req = $conn->prepare($reqSQL);
-            $req->execute();
+        $reqSQL= "SELECT utilisateur.nom, utilisateur.prenom, utilisateur.age, feedback.feedback FROM feedback INNER JOIN utilisateur ON feedback.id_clients = utilisateur.id;";
+		$req = $conn->prepare($reqSQL);
+        $req->execute();
 				
-			$resultat = $req->fetchAll(PDO::FETCH_ASSOC);
-			$conn=NULL;	//Fermer la connexion
+		$resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+			
 
-            foreach($resultat as $value){
-                echo '
-                <div class="testimonial">
-                    <h3>'.$value['nom'].' '.$value['prenom'].', '.$value['age'].' ans</h3>
-                    <p>'.$value['feedback'].'</p>
-                </div>';
+        foreach($resultat as $value){
+            echo '
+            <div class="testimonial">
+                <h3>'.$value['nom'].' '.$value['prenom'].', '.$value['age'].' ans</h3>
+                <p>'.$value['feedback'].'</p>
+            </div>';
 
-            }
+        }
+
+
+        if(isset($_POST['avis'])){
+            $reqSQL="INSERT INTO feedback (id_clients,feedback) VALUES (:id, :feedback)";
+            $req = $conn->prepare($reqSQL);
+            $req->execute([
+                ':id'    => $_SESSION['user_id'],
+                ':feedback' => $_POST['message'],
+            ]);
+            header('Location: avis.php');
+        }
+
+        $conn=NULL;	//Fermer la connexion
 			
 
     ?>
@@ -47,12 +59,12 @@
         }
         else{
             echo '
-                    <form action="submit-review.php" method="post">
+                    <form method="post">
 
                     <label for="message" class="test"><p>Votre témoignage :</p></label>
                     <textarea id="message" name="message" rows="5" placeholder="Racontez votre expérience..." required></textarea>
 
-                    <button type="submit">Envoyer</button>
+                    <button type="submit" name="avis">Envoyer</button>
                 </form>';
         }
     
