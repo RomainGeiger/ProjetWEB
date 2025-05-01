@@ -18,7 +18,7 @@
 
     <?php 
         require("..\bdb\connexion.php"); //Etablie une connexion à la base de données
-        session_start();
+        //session_start(); le header fait déjà un session_start pour gérer l'affichage de l'option d'inscription/connexion
 
         $reqSQL=
         "SELECT utilisateur.nom, utilisateur.prenom, utilisateur.age, feedback.feedback FROM feedback INNER JOIN utilisateur ON feedback.id_clients = utilisateur.id;";
