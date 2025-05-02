@@ -1,148 +1,129 @@
-<!Doctype html>
+<?php
+require("..\bdb\connexion.php");
+// session_start() supposé déjà lancé dans le header
+
+// Insertion du programme choisi
+if (isset($_POST['avis']) && isset($_SESSION['user_id'])) {
+    $programmeChoisi = trim($_POST['message']);
+
+    // Vérification que l'entrée est valide
+    $programmesDisponibles = ['1' => 'Obèselix', '2' => 'Omar Simpson', '3' => 'Wargros'];
+    if (!array_key_exists($programmeChoisi, $programmesDisponibles)) {
+        die('Programme invalide.');
+    }
+
+    // Éviter les doublons : un seul programme par utilisateur
+    $check = $conn->prepare("SELECT COUNT(*) FROM programme WHERE id_clients = :id");
+    $check->execute([':id' => $_SESSION['user_id']]);
+    if ($check->fetchColumn() > 0) {
+        die('Vous avez déjà un programme enregistré.');
+    }
+
+    // Insertion
+    $reqSQL = "INSERT INTO programme (id_clients, programme) VALUES (:id, :programme)";
+    $req = $conn->prepare($reqSQL);
+    $req->execute([
+        ':id' => $_SESSION['user_id'],
+        ':programme' => $programmesDisponibles[$programmeChoisi]
+    ]);
+    header('Location: programmes.php');
+    exit;
+}
+
+// Récupération des programmes commandés
+$reqSQL = "SELECT utilisateur.nom, utilisateur.prenom, utilisateur.age, programme.programme 
+           FROM programme 
+           INNER JOIN utilisateur ON programme.id_clients = utilisateur.id";
+$req = $conn->prepare($reqSQL);
+$req->execute();
+$resultat = $req->fetchAll(PDO::FETCH_ASSOC);
+
+$conn = null;
+?>
+
+<!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title> Programme </title>
-        <meta name="Lettre" content="Programme">
-        <link rel="stylesheet" type="text/css" href="../css/programmes.css" media="screen">	
-        <link rel="stylesheet" href="../css/theme.css">
-	</head>
-
-
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme</title>
+    <link rel="stylesheet" href="../css/programmes.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
 <body>
     <div class="conteneur">
         <?php
-    $title = 'Accueil';
-    include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Php/Darkmode.php';
-    ?>
+        $title = 'Accueil';
+        include $_SERVER['DOCUMENT_ROOT'].'/ProjetWEB/Php/Darkmode.php';
+        ?>
+
         <main>
-                <article class="art1">
-                    <img src="../images/obèselix.png" alt="obèselix">
-                    <h1>Programme 1 : Obèselix</h1>
+            <?php
+            $programmes = [
+                ['id' => '1', 'nom' => 'Obèselix', 'image' => 'obèselix.png', 'jours' => 30, 'repas' => 120, 'encas' => 120, 'prix' => 600],
+                ['id' => '2', 'nom' => 'Omar Simpson', 'image' => 'omarsimpson.jpeg', 'jours' => 60, 'repas' => 240, 'encas' => 120, 'prix' => 1200],
+                ['id' => '3', 'nom' => 'Wargros', 'image' => 'wargros.png', 'jours' => 120, 'repas' => 480, 'encas' => 240, 'prix' => 2200],
+            ];
+
+            foreach ($programmes as $prog) {
+                echo '
+                <article class="art'.$prog['id'].'">
+                    <img src="../images/'.htmlspecialchars($prog['image']).'" alt="'.htmlspecialchars($prog['nom']).'">
+                    <h1>Programme '.$prog['id'].' : '.htmlspecialchars($prog['nom']).'</h1>
                     <ul>
-                        <li>durée : 30 jours</li>
-                        <li>repas : 120</li>
-                        <li>en-cas : 120 (à manger à n'importe quelle heure)</li>
-                        <li>prix : 600 euros</li>
+                        <li>Durée : '.$prog['jours'].' jours</li>
+                        <li>Repas : '.$prog['repas'].'</li>
+                        <li>En-cas : '.$prog['encas'].' (à manger à n\'importe quelle heure)</li>
+                        <li>Prix : '.$prog['prix'].' euros</li>
                     </ul>
                     <div class="resume">
-                    <p>Ce programme est facilement accessible, il permettra de vous lancer dans votre objectif avec un prix abordable. Les repas seront en grande partie des fritures, plats très calorique et des repas semblabes aux fastfood.
-                    <br>Les en-cas quand à eux seront surtout composés d'aliment sucrés, de sodas, ou d'aliment gras. 
-                    <br>
-                    <h2>Nos conseils : </h2><br>
-                    Il est important de les manger en dehors des repas. Votre sommeil ne doit pas exceder 7h, lors de votre sommeil vous allez utiliser énorméments de calories et vous éloigner de votre objectif. Réduire vos activités physique sera bénéfique à la prise de poids, avec une réduction de la masse musculaire. Essayé de vous hydraté seulement quand vous en resentez le besoin. 
-                    </p>
-                    </div>
-                </article>
-
-
-                <article class="art2">
-                    <img src="../images/omarsimpson.jpeg" alt="omarsimpson">
-                    <h1>Programme 2 : Omar Simpson</h1>
-                    <ul>
-                        <li>durée : 60 jours</li>
-                        <li>repas : 240</li>
-                        <li>en-cas : 120 (à manger à n'importe quelle heure)</li>
-                        <li>prix : 1200 euros</li>
-                    </ul>
-                    <div class="resume">
-                        <p> Ce programme est facilement accessible, il permettra de vous lancer dans votre objectif avec un prix abordable. Les repas seront en grande partie des fritures, plats très calorique et des repas semblabes aux fastfood.
-                            <br>Les en-cas quand à eux seront surtout composés d'aliment sucrés, de sodas, ou d'aliment gras. 
-                            <br>
-                            <br><h2>Nos conseils : </h2>
-                            <br>Il est important de les manger en dehors des repas. Votre sommeil ne doit pas exceder 7h, lors de votre sommeil vous allez utiliser énorméments de calories et vous éloigner de votre objectif. Réduire vos activités physique sera bénéfique à la prise de poids, avec une réduction de la masse musculaire. Essayé de vous hydraté seulement quand vous en resentez le besoin. 
+                        <h2>Nos conseils :</h2>
+                        <p>
+                            Mangez les en-cas en dehors des repas.<br>
+                            Limitez votre sommeil à moins de 7h pour éviter de brûler trop de calories.<br>
+                            Réduisez votre activité physique pour favoriser la prise de poids.<br>
+                            Hydratez-vous uniquement lorsque vous en ressentez le besoin.
                         </p>
                     </div>
-                </article>
+                </article>';
+            }
+            ?>
+        </main>
 
-                <article class="art3">
-                    <img src="../images/wargros.png" alt="wargros">
-                    <h1>Programme 3 : Wargros</h1>
-                    <ul>
-                        <li>durée : 120 jours</li>
-                        <li>repas : 480</li>
-                        <li>en-cas : 240 (à manger à n'importe quelle heure)</li>
-                        <li>prix : 2200 euros</li>
-                    </ul>
-                    <div class="resume">
-                            <p> Ce programme est facilement accessible, il permettra de vous lancer dans votre objectif avec un prix abordable. Les repas seront en grande partie des fritures, plats très calorique et des repas semblabes aux fastfood.
-                                <br>Les en-cas quand à eux seront surtout composés d'aliment sucrés, de sodas, ou d'aliment gras. 
-                                <br></p>
-                                <br><h2>Nos conseils : </h2>
-                                <p><br>Il est important de les manger en dehors des repas. Votre sommeil ne doit pas exceder 7h, lors de votre sommeil vous allez utiliser énorméments de calories et vous éloigner de votre objectif. Réduire vos activités physique sera bénéfique à la prise de poids, avec une réduction de la masse musculaire. Essayé de vous hydraté seulement quand vous en resentez le besoin.</p>
-                        </div>
-                </article>
-            </main>
-            <aside class="aside2">
-                <p> </p>
-            </aside>
+        <aside class="aside1"></aside>
+        <aside class="aside2"></aside>
 
-            <aside class="aside1">
-                <p> 
-                </p>
-            </aside>
+        <div class="container">
+            <h2>Clients et leur programme</h2>
+            <?php
+            foreach ($resultat as $value) {
+                echo '
+                <div class="testimonial">
+                    <h3>'.htmlspecialchars($value['nom']).' '.htmlspecialchars($value['prenom']).', '.htmlspecialchars($value['age']).' ans</h3>
+                    <p>'.htmlspecialchars($value['programme']).'</p>
+                </div>';
+            }
+            ?>
 
+            <div class="programes">
+                <h2>Quel programme désirez-vous ?</h2>
+                <?php if (!isset($_SESSION['user_id'])): ?>
+                    <p>Vous devez être connecté pour commander un programme !</p>
+                <?php else: ?>
+                    <form method="post">
+                        <label for="message" class="test">Nos Programmes :</label>
+                        <select name="message" id="message" required>
+                            <option value="" disabled selected>-- Choisissez un programme --</option>
+                            <option value="1">1 = Obèselix</option>
+                            <option value="2">2 = Omar Simpson</option>
+                            <option value="3">3 = Wargros</option>
+                        </select>
+                        <button type="submit" name="avis">Envoyer</button>
+                    </form>
+                <?php endif; ?>
+            </div>
+        </div>
 
-
-
-
-
-
-
-
-
-                
-            <form class="formLetter" method="post" action="#">
-                <fieldset>
-                    <legend>Commande</legend>
-                    
-                    <!-- Nom -->
-                    <label for="nom" class="test">Nom :</label>
-                    <input class="spécial" type="text" name="nom" id="nom" placeholder="Votre nom">
-                    <br><br>
-                    
-                    <!-- Prénom -->
-                    <label for="prenom" class="test">Prénom :</label>
-                    <input class="spécial" type="text" name="prenom" id="prenom" value="">
-                    <br><br>
-            
-                    <!-- Numéro de téléphone -->
-                    <label for="tel" class="test">Numéro de téléphone :</label>
-                    <input class="spécial" type="tel" name="tel" id="tel" value="+33">
-                    <br><br>
-                    
-                    <!-- Courriel -->
-                    <label for="courriel" class="test">Courriel :</label>
-                    <input class="spécial" type="email" name="courriel" id="courriel">
-                    <br><br>
-            
-                    <!-- Publicité -->
-                    <label for="pub" class="test">Pub :</label>
-                    <input class="spécial" type="radio" name="pub" id="oui">
-                    <label for="oui" class="test">Oui, j'accepte</label>
-                    <input class="spécial" type="radio" name="pub" id="non">
-                    <label for="non" class="test">Non je refuse</label>
-                    <br><br>
-            
-                    <!-- Programme -->
-                    <label for="programme" class="test">Programme :</label>
-                    <input class="spécial" type="checkbox" name="programme" id="Obèselix">
-                    <label for="Obèselix" class="test">Obèselix</label>
-                    <input class="spécial" type="checkbox" name="programme" id="OmarSimpson">
-                    <label for="OmarSimpson" class="test">Omar Simpson</label>
-                    <input class="spécial" type="checkbox" name="programme" id="Wargros">
-                    <label for="Wargros" class="test">Wargros</label>
-                    <br><br>
-            
-                    <!-- Soumettre et Réinitialiser -->
-                    <input class="spécial" type="submit" name="Envoyer" id="soumission" value="Soumettre">
-                    <input class="spécial" type="reset" id="reinitialiser" value="Réinitialiser">
-
-                </fieldset>
-            </form>
-            
         <footer class="footer">
             <dl>
                 <dt>Téléphone :</dt>
@@ -165,3 +146,4 @@
             </footer>
     </div>
 </body>
+</html>
