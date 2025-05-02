@@ -33,6 +33,14 @@ $checked = $theme === 'dark' ? 'checked' : '';
     <a href="avis.php">Feedback</a>
     <a href="magazin.php">Boutique</a>
     <a href="contact.php">Contact</a>
+    <?php 
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+      echo '<a href="register.php">Inscription/Connexion</a>';
+    }else{
+      echo '<a href="logout.php">Déconnexion</a></p>';
+    }
+    ?>
 
     <!-- Commutateur de thème sans JavaScript -->
     <form method="get" style="display:inline;">

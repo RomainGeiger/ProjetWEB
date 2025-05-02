@@ -33,6 +33,14 @@ $theme = $_COOKIE['theme'] ?? 'light';
     <a href="Php/avis.php">Feedback</a>
     <a href="Php/magazin.php">Boutique</a>
     <a href="Php/contact.php">Contact</a>
+    <?php 
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+      echo '<a href="Php/register.php">Inscription/Connexion</a>';
+    }else{
+      echo '<a href="Php/logout.php">Déconnexion</a></p>';
+    }
+    ?>
 
     <?php $checked = $theme === 'dark' ? 'checked' : ''; ?>
     <label class="switch">
