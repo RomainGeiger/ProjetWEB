@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 01 mai 2025 à 11:01
+-- Généré le : ven. 02 mai 2025 à 13:59
 -- Version du serveur : 5.7.24
 -- Version de PHP : 8.3.1
 
@@ -124,7 +124,9 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `numero_de_tel`, `adresse_emai
 (5, 'Dupont', 'Alex', '065449413', 'dupont.alex@gmail.com', 'test4', 0, 29),
 (6, 'Dupont', 'Fatima', '06494949', 'dupont.fatima@gmail.com', '079494649', 0, 38),
 (7, 'Dupont', 'Olivier', '06499841', 'dupont.olivier@gmail.com', '067949741', 0, 41),
-(14, 'Geiger', 'Romain', '0671464791', 'geigerromain@gmail.com', '$2y$10$.yW6iNixIP/BUhA4u9ARuucLxH3jjRREjZXwABKE.uv3PRmAxYFYa', 0, 19);
+(14, 'Geiger', 'Romain', '0671464791', 'geigerromain@gmail.com', '$2y$10$.yW6iNixIP/BUhA4u9ARuucLxH3jjRREjZXwABKE.uv3PRmAxYFYa', 0, 19),
+(15, 'Client', 'Client', '067569762', 'compteclient@gmail.com', '$2y$10$uZ18.mii9aclvmExHW9yWez/ILcNUUOFUuOCw2X17FALC10EtxfVK', 0, 25),
+(16, 'Admin', 'Admin', '067797895', 'compteadmin@gmail.com', '$2y$10$Nf537ZTQKal/4cSCowgiEO0Yf6DOwV6dbtkD4ML36Sbs4QHXV/Qm6', 1, 25);
 
 --
 -- Index pour les tables déchargées
@@ -209,7 +211,7 @@ ALTER TABLE `programme`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Contraintes pour les tables déchargées
