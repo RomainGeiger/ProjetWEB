@@ -28,7 +28,7 @@ require_once dirname(__DIR__) . '/config.php';
         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
     <ul class="formLink">
-        <li><a class="formLink" href="magazin.php">Visitez notre boutique en ligne</a></li>
-        <li><a class="formLink" href="contact.php">Contactez-nous </a></li>
+        <li><a class="formLink" href="/ProjetWEB/php/magazin.php">Visitez notre boutique en ligne</a></li>
+        <li><a class="formLink" href="/ProjetWEB/php/contact.php">Contactez-nous </a></li>
     </ul>
 </footer>
