@@ -1,20 +1,77 @@
-*{
-    font-family: Courier New;
+/* ===================== */
+/* === Thème clair === */
+/* ===================== */
+.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --header-bg: orange;
+    --header-text: red;
+    --nav-bg: white;
+    --nav-text: black;
+    --nav-hover: orange;
+    --testimonial-bg: #ffffff;
+    --testimonial-title: red;
+    --avis-bg: #f9f9f9;
+    --avis-title: orange;
+    --label-color: black;
+    --input-border: #ccc;
+    --input-focus: orange;
+    --button-text: white;
+    --button-gradient-start: orange;
+    --button-gradient-end: red;
+    --footer-bg: orange;
+    --footer-text: white;
+    --footer-link: red;
+}
+
+/* ===================== */
+/* === Thème sombre === */
+/* ===================== */
+.dark-theme {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --header-bg: orange;
+    --header-text: red;
+    --nav-bg: black;
+    --nav-text: white;
+    --nav-hover: orange;
+    --testimonial-bg: #111;
+    --testimonial-title: red;
+    --avis-bg: black;
+    --avis-title: orange;
+    --label-color: white;
+    --input-border: #333;
+    --input-focus: orange;
+    --button-text: white;
+    --button-gradient-start: orange;
+    --button-gradient-end: red;
+    --footer-bg: orange;
+    --footer-text: white;
+    --footer-link: red;
+}
+
+/* ===================== */
+/* === Styles communs === */
+/* ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color);
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: black;
-    color: white;
+    padding: 3%;
 }
 
 header {
     text-align: center;
-    background: orange;
-    color: red;
+    background: var(--header-bg);
+    color: var(--header-text);
     padding: 20px 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -25,27 +82,27 @@ header h1 {
     font-weight: bold;
 }
 
-/* Navigation */
 nav {
     margin: 20px 0;
-    background-color: black;
+    background-color: var(--nav-bg);
+    text-align: center;
 }
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: var(--nav-text);
     margin: 0 15px;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: orange;
+    color: var(--nav-hover);
 }
 
 h1 {
-    margin: 0;
     font-size: 2rem;
+    text-align: center;
 }
 
 .container {
@@ -54,8 +111,9 @@ h1 {
     padding: 0 10px;
 }
 
+/* Témoignages */
 .testimonial {
-    background: white;
+    background: var(--testimonial-bg);
     margin: 10px 0;
     padding: 15px;
     border-radius: 5px;
@@ -65,11 +123,12 @@ h1 {
 .testimonial h3 {
     margin-top: 0;
     font-size: 1.2rem;
-    color: red;
+    color: var(--testimonial-title);
 }
 
+/* Formulaire d’avis */
 .avis {
-    background: black;
+    background: var(--avis-bg);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -77,9 +136,10 @@ h1 {
 }
 
 .avis h2 {
-    color: orange;
+    color: var(--avis-title);
     font-weight: 600;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .avis form {
@@ -90,27 +150,31 @@ h1 {
 .avis label {
     margin-bottom: 5px;
     font-weight: 600;
-    color: white;
+    color: var(--label-color);
 }
 
-.avis input, .submit-review textarea {
+.avis input,
+.avis textarea {
     margin-bottom: 15px;
     padding: 12px;
     font-size: 1rem;
-    border: 1px solid black;
+    border: 1px solid var(--input-border);
     border-radius: 5px;
     transition: border-color 0.3s;
+    background: white;
+    color: black;
 }
 
-.avis input:focus, .submit-review textarea:focus {
-    border-color: orange;
+.avis input:focus,
+.avis textarea:focus {
+    border-color: var(--input-focus);
     outline: none;
 }
 
 .avis button {
     padding: 12px 20px;
-    background: linear-gradient(90deg, orange, red);
-    color: white;
+    background: linear-gradient(90deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: var(--button-text);
     border: none;
     border-radius: 5px;
     font-size: 1rem;
@@ -120,20 +184,21 @@ h1 {
 }
 
 .avis button:hover {
-    background: linear-gradient(90deg, red, orange);
+    background: linear-gradient(90deg, var(--button-gradient-end), var(--button-gradient-start));
 }
 
+/* Footer */
 footer {
     text-align: center;
-    background: orange;
-    color: white;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     padding: 15px 10px;
     font-size: 0.9rem;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
 }
 
 footer a {
-    color: red;
+    color: var(--footer-link);
     text-decoration: none;
 }
 
@@ -151,7 +216,8 @@ footer iframe {
     height: auto;
     max-width: 100%;
 }
-/* Media Queries */
+
+/* Responsive */
 @media (max-width: 1024px) {
     h1 {
         font-size: 1.8rem;
@@ -171,7 +237,9 @@ footer iframe {
         padding: 10px;
     }
 
-    .avis input, .avis textarea, .avis button {
+    .avis input,
+    .avis textarea,
+    .avis button {
         font-size: 0.9rem;
     }
 }
@@ -189,14 +257,3 @@ footer iframe {
         padding: 15px;
     }
 }
-
-*{
-    color:white;
-}
-body{padding:3%;
-background-color:black;}
-h1{color:white;
-text-align:center;}
-h2{color:red;}
-h3{color:green;}
-p{color:white}

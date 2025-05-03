@@ -1,28 +1,67 @@
-/* Style général */
+/* ===================== */
+/* === Thème clair === */
+/* ===================== */
+.light-theme {
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --header-bg: orange;
+    --header-text: red;
+    --nav-bg: white;
+    --nav-text: black;
+    --nav-hover: orange;
+    --article-bg: white;
+    --article-text: #000;
+    --footer-bg: orange;
+    --footer-text: white;
+    --link-color: red;
+}
+
+/* ===================== */
+/* === Thème sombre === */
+/* ===================== */
+.dark-theme {
+    --bg-color: #000;
+    --text-color: white;
+    --header-bg: orange;
+    --header-text: red;
+    --nav-bg: black;
+    --nav-text: white;
+    --nav-hover: orange;
+    --article-bg: #111;
+    --article-text: white;
+    --footer-bg: orange;
+    --footer-text: white;
+    --link-color: red;
+}
+
+/* ===================== */
+/* === Styles communs === */
+/* ===================== */
+
 * {
-    font-family: Courier New;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    padding: 3%;
 }
 
-/* En-tête principal */
+/* Header */
 header {
     text-align: center;
-    background: orange;
-    color: red;
+    background-color: var(--header-bg);
+    color: var(--header-text);
     padding: 20px 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.5rem;
     font-weight: bold;
 }
@@ -30,22 +69,23 @@ header h1 {
 /* Navigation */
 nav {
     margin: 20px 0;
-    background-color: black;
+    background-color: var(--nav-bg);
+    text-align: center;
 }
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: var(--nav-text);
     margin: 0 15px;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: orange;
+    color: var(--nav-hover);
 }
 
-/* Contenu principal */
+/* Main content */
 .container {
     max-width: 1200px;
     margin: 20px auto;
@@ -53,8 +93,8 @@ nav a:hover {
 }
 
 article {
-    background: #000000;
-    color:white;
+    background-color: var(--article-bg);
+    color: var(--article-text);
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -73,18 +113,18 @@ article img {
     margin: 10px 0;
 }
 
-/* Pied de page */
+/* Footer */
 footer {
     text-align: center;
-    background: orange;
-    color: white;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     padding: 15px 10px;
     font-size: 0.9rem;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
 }
 
 footer a {
-    color: red;
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -103,7 +143,7 @@ footer iframe {
     max-width: 100%;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
     header h1 {
         font-size: 2rem;
@@ -128,14 +168,3 @@ footer iframe {
         margin: 0 10px;
     }
 }
-
-*{
-    color:white;
-}
-body{padding:3%;
-background-color:black;}
-h1{color:white;
-text-align:center;}
-h2{color:red;}
-h3{color:green;}
-p{color:white}
