@@ -46,7 +46,7 @@ $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title> Programme </title>
         <meta name="Lettre" content="Programme">
-        <link rel="stylesheet" href="../css/programmes.css">	
+        <link rel="stylesheet" href="../css/presentation.css">	
 	</head>
     <?php 
 if(isset($_COOKIE["theme"])){
