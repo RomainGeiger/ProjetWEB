@@ -37,8 +37,6 @@ $reqSQL = "SELECT utilisateur.nom, utilisateur.prenom, utilisateur.age, programm
 $req = $conn->prepare($reqSQL);
 $req->execute();
 $resultat = $req->fetchAll(PDO::FETCH_ASSOC);
-
-$conn = null;
 ?>
 
 <!Doctype html>
