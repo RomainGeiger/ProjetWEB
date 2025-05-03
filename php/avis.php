@@ -39,7 +39,7 @@ else{
             echo '
             <div class="testimonial">
                 <h3>'.$value['nom'].' '.$value['prenom'].', '.$value['age'].' ans</h3>
-                <p>'.$value['feedback'].'</p>
+                <p>'.htmlspecialchars($value['feedback']).'</p>
             </div>';
 
         }
@@ -50,7 +50,7 @@ else{
             $req = $conn->prepare($reqSQL);
             $req->execute([
                 ':id'    => $_SESSION['user_id'],
-                ':feedback' => $_POST['message'],
+                ':feedback' => htmlspecialchars($_POST['message']),
             ]);
             header('Location: avis.php');
         }
