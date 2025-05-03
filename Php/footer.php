@@ -30,6 +30,5 @@ require_once dirname(__DIR__) . '/config.php';
     <ul class="formLink">
         <li><a class="formLink" href="magazin.php">Visitez notre boutique en ligne</a></li>
         <li><a class="formLink" href="contact.php">Contactez-nous </a></li>
-        <li><a class="formLink" href="login.php">Connectez-vous! </a></li>
     </ul>
 </footer>
