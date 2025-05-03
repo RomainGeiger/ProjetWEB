@@ -1,7 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/config.php';
 require("..\bdb\connexion.php");
-// session_start() supposé déjà lancé dans le header
 
 // Insertion du programme choisi
 if (isset($_POST['avis']) && isset($_SESSION['user_id'])) {
